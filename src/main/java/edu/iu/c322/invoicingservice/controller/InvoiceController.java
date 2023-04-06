@@ -45,8 +45,11 @@ public class InvoiceController {
         InvoiceItem iitem = new InvoiceItem();
         iitem.setAddress(order.getShippingAddress());
         List<Item> items = new ArrayList<>(order.getItems());
+        System.out.println(order.getItems());
         iitem.setItems(items);
-        invoice.addInvoiceItem(iitem);
+        List<InvoiceItem> invoiceItems = new ArrayList<>();
+        invoiceItems.add(iitem);
+        invoice.setInvoiceItems(invoiceItems);
         repository.save(invoice);
         return invoice;
     }
